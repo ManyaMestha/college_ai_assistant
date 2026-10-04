@@ -6,3 +6,6 @@ sentence-transformers
 faiss-cpu
 pypdf
 streamlit
+langgraph
+langchain-google-genai
+python-dotenv
