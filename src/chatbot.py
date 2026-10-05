@@ -3,7 +3,7 @@ from langchain_core.prompts import PromptTemplate
 # Shared Gemini setup (reads GOOGLE_API_KEY from .env)
 from src.llm import get_llm
 
-# Retrieval function from rag.py inside src/
+
 from src.rag import retrieve_documents
 
 NOT_FOUND_MESSAGE = "I couldn't find this information in the college documents."
