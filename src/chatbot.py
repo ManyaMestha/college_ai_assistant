@@ -38,8 +38,38 @@ def ask_question(question: str) -> str:
         question=question
     )
 
-    response = get_llm().invoke(formatted_prompt)
-    return response.text
+    try:
+        response = get_llm().invoke(formatted_prompt)
+        return response.text
+
+    except Exception as error:
+        # Gemini unavailable (e.g. daily limit reached):
+        # still show what was found in the documents
+        print(f"Gemini error: {error}")
+        return format_passages(docs)
+
+
+def format_passages(docs, limit=3):
+    """
+    Show the retrieved document passages directly,
+    used when Gemini cannot generate an answer.
+    """
+
+    passages = [
+        "⚠️ The AI answer is not available right now (Gemini limit "
+        "reached or busy). Here are the most relevant passages "
+        "from the college documents:"
+    ]
+
+    for doc in docs[:limit]:
+        source = doc.metadata.get("source", "Unknown")
+        page = doc.metadata.get("page")
+        page_text = f", page {page + 1}" if isinstance(page, int) else ""
+        text = " ".join(doc.page_content.split())
+
+        passages.append(f"**{source}{page_text}**\n\n> {text}")
+
+    return "\n\n".join(passages)
 
 
 # Run from the project root: python -m src.chatbot

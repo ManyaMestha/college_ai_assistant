@@ -1,0 +1,36 @@
+[server]
+# Don't scan imported libraries for changes. Scanning the transformers
+# package causes "No module named 'torchvision'" errors and a slow first load.
+# After editing the code, restart the app (Ctrl+C, then streamlit run app.py).
+fileWatcherType = "none"
+
+[client]
+# Hide the developer menu and "Deploy" button for a cleaner look
+toolbarMode = "minimal"
+
+[theme]
+# Premium palette: midnight navy, champagne gold, warm ivory
+base = "dark"
+primaryColor = "#D4B26A"
+backgroundColor = "#0B0E19"
+secondaryBackgroundColor = "#151A2B"
+textColor = "#ECE7DC"
+borderColor = "#262C42"
+linkColor = "#E2C58A"
+linkUnderline = false
+
+greenColor = "#6FCBA5"
+greenBackgroundColor = "rgba(111, 203, 165, 0.10)"
+greenTextColor = "#9FE0C3"
+redBackgroundColor = "rgba(232, 119, 119, 0.10)"
+redTextColor = "#F2A5A5"
+blueBackgroundColor = "rgba(212, 178, 106, 0.08)"
+blueTextColor = "#E2C58A"
+
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+headingFont = "Playfair Display:https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap"
+headingFontWeights = [700, 600, 600]
+
+baseRadius = "0.75rem"
+buttonRadius = "0.65rem"
+showWidgetBorder = true
